@@ -1,14 +1,12 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
-const getNotes = () => {
-    return 'Your notes...'
-}
-
 const addNote = (title, body) => {
     const notes = loadNotes()   // loadNotes makes notes an object of JSON data
     // const duplicateNotes = notes.filter(note => note.title === title)
     const duplicateNote = notes.find(note => note.title === title)  // Finds and stops on the first match
+
+    //debugger    // Will stop the application at this point in time, letting us look at dev tools
 
     if (!duplicateNote) {
         notes.push({                // Append new note to notes object
@@ -77,7 +75,6 @@ const loadNotes = () => {
 }
 
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,
